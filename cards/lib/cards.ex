@@ -5,13 +5,10 @@ defmodule Cards do
     # for every card value, I want to match it to every suit
     # need to create new list that contains combination of this
 
-    cards = for value <- values do
-      for suit <- suits do # for every element in suits, do this thing
+    for suit <- suits, value <- values do # you can have multiple comprehensions running at the same time - by passing both list to same comprehension - you get every possible combination of suits and values within this comprehension
+      # for every element in suits, do this thing
         "#{value} of #{suit}"
-      end
     end
-
-    List.flatten(cards)
   end
 
   # number of arguments a function accepts is called arity e.g. shuffle/1 has an arity of 1
@@ -23,6 +20,11 @@ defmodule Cards do
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
+
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size) # this returns a tuple with {[deck:[], hand:[]}
+  end
+
 
 end
 
