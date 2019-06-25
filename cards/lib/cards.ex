@@ -1,6 +1,17 @@
 defmodule Cards do
   def create_deck do
-    ["Ace", "Two", "Three"]
+    values = ["Ace", "Two", "Three", "Four", "Five"]
+    suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
+    # for every card value, I want to match it to every suit
+    # need to create new list that contains combination of this
+
+    cards = for value <- values do
+      for suit <- suits do # for every element in suits, do this thing
+        "#{value} of #{suit}"
+      end
+    end
+
+    List.flatten(cards)
   end
 
   # number of arguments a function accepts is called arity e.g. shuffle/1 has an arity of 1
